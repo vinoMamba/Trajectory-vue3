@@ -22,10 +22,17 @@ const TagList: RouteRecordRaw = {
     name: "TagList",
     component: () => import("/@/views/TagList.vue")
 };
+
+const Money: RouteRecordRaw = {
+    path: "/money",
+    name: "Money",
+    component: () => import("/@/views/Money.vue")
+};
 const RouterMap: RouteRecordRaw[] = [
     ...basicRoutes,
     Statistics,
-    TagList
+    TagList,
+    Money
 ];
 
 export default RouterMap;
