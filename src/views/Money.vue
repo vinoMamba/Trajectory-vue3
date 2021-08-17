@@ -1,14 +1,19 @@
 <script lang="tsx">
-import {defineComponent} from "vue";
+import {defineComponent, ref, unref} from "vue";
 import NumberPad from "/@/components/NumberPad.vue";
+import InputItem from "/@/components/InputItem.vue";
 
 export default defineComponent({
   name: 'Money',
-  components: {NumberPad},
+  components: {InputItem, NumberPad},
   setup() {
+    const placeholder = ref("写点什么吧(*^▽^*)");
     return () => {
       return (
-          <NumberPad/>
+          <>
+            <InputItem placeholder={unref(placeholder)}/>
+            <NumberPad/>
+          </>
       );
     };
   }
