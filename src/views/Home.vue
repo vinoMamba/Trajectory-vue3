@@ -1,15 +1,17 @@
 <script lang="tsx">
+import SvgIcon from "../components/SvgIcon.vue";
 import {defineComponent, FunctionalComponent} from "vue";
 import TopBar from "/@/components/TopBar.vue";
+import Detail from "/@/components/Detail.vue";
 
 export default defineComponent({
   name: "Home",
-  components: {TopBar},
+  components: {TopBar, SvgIcon, Detail},
   setup() {
     const LinkToMoney: FunctionalComponent = () => {
       return (
           <router-link to="/money">
-            添加
+            <SvgIcon name="add" class="icon-add"/>
           </router-link>
       );
     };
@@ -17,6 +19,7 @@ export default defineComponent({
       return (
           <div class="wrapper">
             <TopBar/>
+            <Detail/>
             <LinkToMoney/>
           </div>
       );
@@ -25,20 +28,20 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .wrapper {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
-  .add {
-    padding: 4px;
-    height: 2.5em;
-    width: 2.5em;
-    fill: white;
-    border-radius: 50%;
-    background-color: #6b94e9;
-    box-shadow: 2px 0 2px 1px rgba(0, 0, 0, .25);
-  }
+.icon-add {
+  padding: 4px;
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 50%;
+  background-color: #6b94e9;
+  box-shadow: 2px 0 2px 1px rgba(0, 0, 0, .25);
 }
 </style>

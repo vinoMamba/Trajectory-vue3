@@ -1,16 +1,21 @@
 <script lang="tsx">
 import {defineComponent} from "vue";
+import SvgIcon from "./SvgIcon.vue";
 import Header from '/@/components/Header.vue';
 
 export default defineComponent({
   name: 'TopBar',
-  components: {Header},
+  components: {Header, SvgIcon},
   setup() {
     const slots = {
       link: () => (
           <>
-            <router-link to="/tagList">标签</router-link>
-            <router-link to="/statistics">统计</router-link>
+            <router-link to="/tagList">
+              <SvgIcon name="tag"/>
+            </router-link>
+            <router-link to="/statistics">
+              <SvgIcon name="statistics"/>
+            </router-link>
           </>
       )
     };
