@@ -1,5 +1,6 @@
 <script lang="tsx">
 import {defineComponent, FunctionalComponent} from "vue";
+import SvgIcon from "./SvgIcon.vue";
 import Header from "./Header.vue";
 
 function undo() {
@@ -13,14 +14,16 @@ function selectCategory(type: string) {
 const TagBody: FunctionalComponent = () => {
   return (
       <>
-        <div onClick={undo}>返回</div>
-        <ul>
-          <li onClick={() => {
-            selectCategory('-');
+        <div onClick={undo}>
+          <SvgIcon name="left"/>
+        </div>
+        <ul class="tag-wrap">
+          <li class="tag-item" onClick={() => {
+            selectCategory("-");
           }}>支出
           </li>
-          <li onClick={() => {
-            selectCategory('+');
+          <li class="tag-item" onClick={() => {
+            selectCategory("+");
           }}>收入
           </li>
         </ul>
@@ -31,7 +34,8 @@ const TagBody: FunctionalComponent = () => {
 export default defineComponent({
   name: "TagBar",
   components: {
-    Header
+    Header,
+    SvgIcon
   },
   setup() {
     const slots = {
@@ -47,48 +51,46 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "src/assets/helper";
 
-header {
-  > ul {
+.tag-wrap {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+
+  .tag-item {
+    position: relative;
     padding: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
 
-    > li {
-      position: relative;
-      padding: 8px;
+    &.selectedOutput {
+      color: $output-color;
+    }
 
-      &.selectedOutput {
-        color: $output-color;
-      }
+    &.selectedOutput::after {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      content: '';
+      display: block;
+      border-bottom: 2px solid $output-color;
+    }
 
-      &.selectedOutput::after {
-        width: 100%;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        content: '';
-        display: block;
-        border-bottom: 2px solid $output-color;
-      }
+    &.selectedInput {
+      color: $input-color;
+    }
 
-      &.selectedInput {
-        color: $input-color;
-      }
-
-      &.selectedInput::after {
-        width: 100%;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        content: '';
-        display: block;
-        border-bottom: 2px solid $input-color;
-      }
+    &.selectedInput::after {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      content: '';
+      display: block;
+      border-bottom: 2px solid $input-color;
     }
   }
 }
