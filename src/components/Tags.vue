@@ -25,12 +25,15 @@ export default defineComponent({
       {id: createTagId(), name: "红包", iconName: "red", category: "+"},
       {id: createTagId(), name: "其他", iconName: "other", category: "+"},
     ]);
+    const toggleTag = (id: number) => {
+      console.log(id);
+    };
     return () => {
       return (
           <ul class="tags-wrap">
             {tagList.map(item => {
               return (
-                  <li class="tags-item">
+                  <li class="tags-item" onClick={() => toggleTag(item.id)} key={item.id}>
                     <SvgIcon name={item.iconName}/>
                     <span>{item.name}</span>
                   </li>
