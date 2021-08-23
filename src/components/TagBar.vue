@@ -2,6 +2,7 @@
 import {defineComponent, FunctionalComponent} from "vue";
 import SvgIcon from "./SvgIcon.vue";
 import Header from "./Header.vue";
+import {useCategory} from "../hooks/useCategory";
 
 function undo() {
   window.history.back();
@@ -12,6 +13,8 @@ function selectCategory(type: string) {
 }
 
 const TagBody: FunctionalComponent = () => {
+  const {getCategory, setCategory} = useCategory();
+  const category = getCategory.value;
   return (
       <>
         <div onClick={undo}>
@@ -19,14 +22,17 @@ const TagBody: FunctionalComponent = () => {
         </div>
         <ul class="tag-wrap">
           <li class="tag-item" onClick={() => {
-            selectCategory("-");
+            setCategory("-");
           }}>支出
           </li>
           <li class="tag-item" onClick={() => {
-            selectCategory("+");
+            setCategory("+");
           }}>收入
           </li>
         </ul>
+        <div onClick={undo}>
+          <SvgIcon name="xxx"/>
+        </div>
       </>
   );
 };
