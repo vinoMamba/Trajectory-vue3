@@ -5,4 +5,11 @@ declare interface ViteEnv {
     VITE_USE_MOCK: boolean
 }
 
-declare type Category = '+' | '-'
+declare type Category = "+" | "-"
+
+declare interface Tag {
+    id: number
+    name: string
+    iconName: string
+    category: Category
+}

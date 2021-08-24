@@ -2,26 +2,32 @@
 import {defineComponent, FunctionalComponent, ref, watchEffect} from "vue";
 import SvgIcon from "./SvgIcon.vue";
 import Header from "./Header.vue";
-import {useCategory} from "../hooks/useCategory";
+import {useCategoryInject} from "../hooks/context";
+import {useTagListInject} from "../hooks/context";
 
 function undo() {
   window.history.back();
 }
 
 const TagBody: FunctionalComponent = () => {
-  const {category, setCategory} = useCategory();
+  const {category, setCategory} = useCategoryInject();
+  const {filterTagList} = useTagListInject();
+  const toggleTag = (category: Category) => {
+    setCategory(category);
+    filterTagList(category);
+  };
   return (
       <>
         <div onClick={undo}>
           <SvgIcon name="left"/>
         </div>
         <ul class="tag-wrap">
-          <li class={{"tag-item": true, selectedOutput: category.value === '-'}} onClick={() => {
-            setCategory("-");
+          <li class={{"tag-item": true, selectedOutput: category.value === "-"}} onClick={() => {
+            toggleTag("-");
           }}>支出
           </li>
-          <li class={{"tag-item": true, selectedInput: category.value === '+'}} onClick={() => {
-            setCategory("+");
+          <li class={{"tag-item": true, selectedInput: category.value === "+"}} onClick={() => {
+            toggleTag("+");
           }}>收入
           </li>
         </ul>
