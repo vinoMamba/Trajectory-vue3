@@ -1,5 +1,5 @@
 <script lang="tsx">
-import {defineComponent, FunctionalComponent} from "vue";
+import {defineComponent, FunctionalComponent, ref, watchEffect} from "vue";
 import SvgIcon from "./SvgIcon.vue";
 import Header from "./Header.vue";
 import {useCategory} from "../hooks/useCategory";
@@ -8,24 +8,19 @@ function undo() {
   window.history.back();
 }
 
-function selectCategory(type: string) {
-  console.log(type);
-}
-
 const TagBody: FunctionalComponent = () => {
-  const {getCategory, setCategory} = useCategory();
-  const category = getCategory.value;
+  const {category, setCategory} = useCategory();
   return (
       <>
         <div onClick={undo}>
           <SvgIcon name="left"/>
         </div>
         <ul class="tag-wrap">
-          <li class="tag-item" onClick={() => {
+          <li class={{"tag-item": true, selectedOutput: category.value === '-'}} onClick={() => {
             setCategory("-");
           }}>支出
           </li>
-          <li class="tag-item" onClick={() => {
+          <li class={{"tag-item": true, selectedInput: category.value === '+'}} onClick={() => {
             setCategory("+");
           }}>收入
           </li>

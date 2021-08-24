@@ -4,3 +4,5 @@ declare interface ViteEnv {
     VITE_PORT: number
     VITE_USE_MOCK: boolean
 }
+
+declare type Category = '+' | '-'

@@ -1,11 +1,25 @@
 import {ref} from "vue";
 
-type Category = '+' | '-'
+
+function getDefaultValue(): Category {
+    const value = window.localStorage.getItem('category') as Category;
+    if (value) {
+        try {
+            return value;
+        } catch {
+            throw new Error('no Value');
+        }
+    }
+    return '-';
+}
 
 export function useCategory() {
-    const getCategory = ref<Category>(window.localStorage.getItem('category') || '-');
-    const setCategory = (value: Category) => {
-        window.localStorage.setItem('category', value);
+    const value = getDefaultValue();
+    const category = ref<Category>('-');
+    const setCategory = (val: Category) => {
+        window.localStorage.setItem('category', val);
+        category.value = val;
     };
-    return {getCategory, setCategory};
+    setCategory(value);
+    return {category, setCategory};
 }
