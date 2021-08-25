@@ -1,5 +1,5 @@
 <script lang="tsx">
-import {defineComponent, FunctionalComponent, ref, watchEffect} from "vue";
+import {defineComponent, FunctionalComponent} from "vue";
 import SvgIcon from "./SvgIcon.vue";
 import Header from "./Header.vue";
 import {useCategoryInject} from "../hooks/context";

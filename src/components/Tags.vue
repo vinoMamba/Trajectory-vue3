@@ -1,5 +1,5 @@
 <script lang="tsx">
-import {defineComponent, ref} from "vue";
+import {defineComponent, ref, watchEffect} from "vue";
 import SvgIcon from "./SvgIcon.vue";
 import {useTagListInject} from "../hooks/context";
 
@@ -7,18 +7,23 @@ export default defineComponent({
   name: "Tags",
   components: {SvgIcon},
   setup() {
-    const currentTagId = ref(1);
     const {tagList} = useTagListInject();
+    const selectTagId = ref(0);
+    watchEffect(() => {
+      selectTagId.value = tagList.value[0].id;
+    });
     const toggleTag = (id: number) => {
-      console.log(id);
-      currentTagId.value = id;
+      selectTagId.value = id;
     };
     return () => {
       return (
           <ul class="tags-wrap">
             {tagList.value.map((item) => {
               return (
-                  <li class={{"tags-item": true, "checked": currentTagId.value === item.id}}
+                  <li class={{
+                    "tags-item": true,
+                    checked: selectTagId.value === item.id
+                  }}
                       onClick={() => toggleTag(item.id)}
                       key={item.id}>
                     <SvgIcon name={item.iconName}/>

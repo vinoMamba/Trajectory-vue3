@@ -1,7 +1,7 @@
 import {inject, provide, ref, Ref} from "vue";
 
 type TagListContext = {
-    tagList: Ref<Tag[]>,
+    tagList: Ref<Tag[]>
     setTagList: (value: Tag[]) => void
     filterTagList: (value: Category) => void
 }
