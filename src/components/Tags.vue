@@ -1,13 +1,14 @@
 <script lang="tsx">
 import {defineComponent, ref, watchEffect} from "vue";
 import SvgIcon from "./SvgIcon.vue";
-import {useTagListInject} from "../hooks/context";
+import {useCategoryInject, useTagListInject} from "../hooks/context";
 
 export default defineComponent({
   name: "Tags",
   components: {SvgIcon},
   setup() {
     const {tagList} = useTagListInject();
+    const {category} = useCategoryInject();
     const selectTagId = ref(0);
     watchEffect(() => {
       selectTagId.value = tagList.value[0].id;
@@ -22,7 +23,8 @@ export default defineComponent({
               return (
                   <li class={{
                     "tags-item": true,
-                    checked: selectTagId.value === item.id
+                    selectedInput: selectTagId.value === item.id && category.value === "+",
+                    selectedOutput: selectTagId.value === item.id && category.value === "-",
                   }}
                       onClick={() => toggleTag(item.id)}
                       key={item.id}>
@@ -44,8 +46,22 @@ export default defineComponent({
   flex-wrap: wrap;
   box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25), inset 0 5px 5px -5px rgba(0, 0, 0, 0.25);
 
-  .checked {
-    color: red;
+  svg {
+    padding: 4px;
+    border-radius: 50%;
+    background-color: white;
+  }
+
+  .selectedInput {
+    color: #5bbb6d;
+  }
+
+  .selectedOutput {
+    color: #ed7c78;
+
+    svg {
+      fill: #ed7c78 !important;
+    }
   }
 }
 

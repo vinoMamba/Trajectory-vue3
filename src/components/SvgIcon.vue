@@ -10,7 +10,7 @@
 import {defineComponent, computed} from "vue";
 
 export default defineComponent({
-  name: 'SvgIcon',
+  name: "SvgIcon",
   props: {
     name: {
       type: String,
@@ -18,7 +18,7 @@ export default defineComponent({
     },
     color: {
       type: String,
-      default: ''
+      default: ""
     }
   },
   setup(props) {
@@ -27,7 +27,7 @@ export default defineComponent({
       if (props.name) {
         return `svg-icon icon-${props.name}`;
       }
-      return 'svg-icon';
+      return "svg-icon";
     });
     return {
       iconName,
