@@ -37,6 +37,7 @@ export default defineComponent({
 }
 
 .icon-add {
+  fill: white;
   padding: 4px;
   height: 2.5em;
   width: 2.5em;

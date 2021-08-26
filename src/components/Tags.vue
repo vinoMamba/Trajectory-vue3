@@ -42,9 +42,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .tags-wrap {
-  display: flex;
-  flex-wrap: wrap;
+  height: 100%;
   box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25), inset 0 5px 5px -5px rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20vw);
+  grid-template-rows: repeat(auto-fill, 20vw);
 
   svg {
     padding: 4px;
@@ -66,7 +68,8 @@ export default defineComponent({
 }
 
 .tags-item {
-  width: 20%;
+  width: 20vw;
+  height: 20vw;
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -75,7 +78,7 @@ export default defineComponent({
 
   span {
     margin-top: 4px;
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 </style>

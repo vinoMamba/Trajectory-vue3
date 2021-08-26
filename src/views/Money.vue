@@ -12,14 +12,29 @@ export default defineComponent({
     const placeholder = ref("写点什么吧(*^▽^*)");
     return () => {
       return (
-          <>
+          <div class="money-wrap">
             <TagBar/>
-            <Tags/>
+            <div class="tags">
+              <Tags/>
+            </div>
             <InputItem placeholder={unref(placeholder)}/>
             <NumberPad/>
-          </>
+          </div>
       );
     };
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.money-wrap {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .tags {
+    overflow: auto;
+    flex-grow: 1;
+  }
+}
+</style>
