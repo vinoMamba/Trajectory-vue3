@@ -33,6 +33,12 @@ export default defineComponent({
                   </li>
               );
             })}
+            <li>
+              <router-link class="tags-item tags-item-setting" to="/tagList">
+                <SvgIcon name="tagSetting" class/>
+                <span>管理</span>
+              </router-link>
+            </li>
           </ul>
       );
     };
@@ -80,5 +86,16 @@ export default defineComponent({
     margin-top: 4px;
     font-size: 15px;
   }
+}
+
+.tags-item-setting {
+  > span {
+    color: #0078d7;
+  }
+
+  svg {
+    fill: #0078d7 !important;
+  }
+
 }
 </style>
