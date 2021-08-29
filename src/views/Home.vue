@@ -3,10 +3,11 @@ import SvgIcon from "../components/SvgIcon.vue";
 import {defineComponent, FunctionalComponent} from "vue";
 import TopBar from "/@/components/TopBar.vue";
 import Detail from "/@/components/Detail.vue";
+import Sidebar from "/@/components/Sidebar.vue";
 
 export default defineComponent({
   name: "Home",
-  components: {TopBar, SvgIcon, Detail},
+  components: {TopBar, SvgIcon, Detail, Sidebar},
   setup() {
     const LinkToMoney: FunctionalComponent = () => {
       return (
@@ -18,6 +19,7 @@ export default defineComponent({
     return () => {
       return (
           <div class="home-wrapper">
+            <Sidebar/>
             <TopBar/>
             <Detail/>
             <LinkToMoney/>
