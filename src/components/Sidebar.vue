@@ -1,12 +1,29 @@
 <script lang="tsx">
-import {defineComponent} from "vue";
+import {defineComponent, FunctionalComponent} from "vue";
 import {useToggleInject} from "../hooks/context";
 import SvgIcon from "./SvgIcon.vue";
+import UserInfo from "./user/UserInfo.vue";
+import {useDark} from "../hooks/useDark";
 
 export default defineComponent({
   name: "Sidebar",
-  components: {SvgIcon},
+  components: {SvgIcon, UserInfo},
   setup() {
+
+    const SideList: FunctionalComponent = () => {
+      const {setModeState, modeState} = useDark();
+      return (
+          <ul class="side-list-wrap">
+            <li class="side-list-item">
+              <span>夜间模式</span>
+              <div onClick={() => setModeState()}>
+                <SvgIcon name={modeState.value === "darkMode" ? "dark" : "light"}/>
+              </div>
+            </li>
+          </ul>
+      );
+    };
+
     const {toggleState, setToggleState} = useToggleInject();
     const closeSidebar = (e: MouseEvent) => {
       if (e.target !== e.currentTarget) {
@@ -20,8 +37,8 @@ export default defineComponent({
       return (
           <>
             <div class={{"sidebar": true, "open-sidebar": toggleState.value}}>
-
-
+              <UserInfo/>
+              <SideList/>
               <div onClick={() => setToggleState()}>
                 <SvgIcon name="return"/>
               </div>
@@ -38,13 +55,15 @@ export default defineComponent({
 
 <style lang="scss">
 .sidebar {
+  padding: 24px;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
   width: 80vw;
   height: 100vh;
-  background-color: white;
+  background-color: var(--background-color);
+  color: var(--text-color);
   transition: .3s ease-in-out;
   transform: translateX(-105%);
 
@@ -81,5 +100,14 @@ export default defineComponent({
   }
 }
 
+.side-list {
+  &-wrap {
+  }
 
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
 </style>
