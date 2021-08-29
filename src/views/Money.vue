@@ -2,8 +2,8 @@
 import {defineComponent, ref, unref} from "vue";
 import NumberPad from "/@/components/NumberPad.vue";
 import InputItem from "/@/components/InputItem.vue";
-import TagBar from "../components/TagBar.vue";
-import Tags from "../components/Tags.vue";
+import TagBar from "/@/components/TagBar.vue";
+import Tags from "/@/components/Tags.vue";
 
 export default defineComponent({
   name: "Money",

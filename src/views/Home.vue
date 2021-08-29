@@ -17,7 +17,7 @@ export default defineComponent({
     };
     return () => {
       return (
-          <div class="wrapper">
+          <div class="home-wrapper">
             <TopBar/>
             <Detail/>
             <LinkToMoney/>
@@ -29,7 +29,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.wrapper {
+.home-wrapper {
+  background-color: var(--background-color);
   height: 100vh;
   display: flex;
   flex-direction: column;

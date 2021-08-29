@@ -10,7 +10,7 @@ const NoDataPage: FunctionalComponent = () => {
 };
 
 export default defineComponent({
-  name: 'Detail',
+  name: "Detail",
   setup() {
     return () => {
       return (
@@ -27,6 +27,8 @@ export default defineComponent({
 .wrapper {
   width: 85%;
   height: 70vh;
+  color: var(--background--text-color);
+  background-color: var(--surface-color);
 
   > .empty {
     height: 100%;
@@ -34,6 +36,7 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--background-color);
   }
 
   ul {

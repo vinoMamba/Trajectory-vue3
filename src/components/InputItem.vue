@@ -4,20 +4,20 @@ import {defineComponent} from "vue";
 const inputItemProps = {
   itemName: {
     type: String,
-    default: '备注'
+    default: "备注"
   },
   placeholder: {
     type: String,
-    default: '备注内容'
+    default: "备注内容"
   },
   typeName: {
     type: String,
-    default: 'text'
+    default: "text"
   }
 };
 
 export default defineComponent({
-  name: 'InputItem',
+  name: "InputItem",
   props: inputItemProps,
   setup(props) {
     return () => {
@@ -38,14 +38,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 label {
-  padding: 4px;
+  padding: 8px 4px;
   display: flex;
   align-items: center;
-  background-color: #efefef;
+  background-color: var(--background-color);
+  color: var(--text-color);
   border-bottom: 1px solid #ffffff;
 
   > span {
-    border-right: 2px dotted #ffffff;
+    border-right: 2px dotted var(--background--text-color);
     padding: 16px;
     font-size: 14px;
   }
@@ -59,7 +60,8 @@ label {
     flex-grow: 1;
     outline: none;
     border: none;
-    background-color: inherit;
+    background-color: var(--background-color);
+    color: var(--text-color);
   }
 }
 </style>

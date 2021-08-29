@@ -48,6 +48,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .tags-wrap {
+  background-color: var(--background-color);
+  color: var(--background--text-color);
   height: 100%;
   box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25), inset 0 5px 5px -5px rgba(0, 0, 0, 0.25);
   display: grid;
@@ -57,7 +59,7 @@ export default defineComponent({
   svg {
     padding: 4px;
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--surface-color);
   }
 
   .selectedInput {

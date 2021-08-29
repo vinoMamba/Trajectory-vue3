@@ -1,0 +1,12 @@
+:root {
+  --background-color: #fafafa;
+
+  --text-color: #393a34;
+}
+
+[data-theme="darkMode"] {
+  --background-color: #111111;
+  --surface-color: #1e1e1e;
+  --background--text-color: #dedede;
+  --text-color: #ffffff;
+}
