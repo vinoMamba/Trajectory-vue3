@@ -28,7 +28,9 @@ export default defineConfig(({command, mode}) => {
             host: true,
             port: VITE_PORT,
             //出现跨域问题再来配置
-            proxy: {}
+            proxy: {
+                '/foo': 'http://192.168.110.13:3000'
+            }
         },
         plugins: createVitePlugins(viteEnv, isBuild)
     };
